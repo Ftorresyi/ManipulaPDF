@@ -8,14 +8,27 @@ filename = "bca_do_dia.pdf"
 # load the PDF file
 pdf = Pdf.open(filename)
 
-#Next, we make the resulting PDF files (3 in this case) as a list:
+'''#Next, we make the resulting PDF files (3 in this case) as a list:
 # a dictionary mapping PDF file to original PDF's page range
 file2pages = {
     0: [0, 9], # 1st splitted PDF file will contain the pages from 0 to 9 (9 is not included)
     1: [9, 11], # 2nd splitted PDF file will contain the pages from 9 (9 is included) to 11
     2: [11, 100], # 3rd splitted PDF file will contain the pages from 11 until the end or until the 100th page (if exists)
-}
-    
+}'''
+
+#FUNCIONANDO TOTAL 3
+pginit = 10000
+file2pages = {}
+for i in range(1,5):
+    while pginit != 0:
+        pginit = int(input('Digite a página inicial da divisão. Tecle Zero par a sair '))
+        pgfim = int(input('Digite a página final da divisão. Tecle Zero par a sair '))
+        file2pages[i] = [pginit, pgfim]
+        i=i+1
+        print(file2pages, type(file2pages))
+    else: break
+print (file2pages, " é um dicionario")
+
 '''In the above setting, we're going to split our PDF file into 3 new PDF documents, the first contains the first 9 pages,
 from 0 to 9 (while 9 is not included). The second file will contain the pages from 9 (included) to 11, and the last file
 will contain the page range from 11 until the end or until reaching page 100 if it exists.
@@ -29,7 +42,6 @@ This is the file we're going to split (you can get it here if you want to follow
 new_pdf_files = [ Pdf.new() for i in file2pages ]
 # the current pdf file index
 new_pdf_index = 0
-
 
 
 '''To make a new PDF file, you simply call the Pdf.new() method. The new_pdf_index variable is the index of the file,
@@ -86,31 +98,3 @@ Here's the output when I run the code:
 [*] Assigning Page 14 to the file 2
 [*] Assigning Page 15 to the file 2
 [+] File: bert-paper-2.pdf saved.'''
-
-# %%
-file2pages1 = {
-    0: [0, 9], # 1st splitted PDF file will contain the pages from 0 to 9 (9 is not included)
-    1: [9, 11], # 2nd splitted PDF file will contain the pages from 9 (9 is included) to 11
-    2: [11, 100], # 3rd splitted PDF file will contain the pages from 11 until the end or until the 100th page (if exists)
-}
-
-'''le_intervalo = list()
-pgs=0
-while pgs<= len(le_intervalo):
-    intervalo = input('Escreva os intervalos das páginas que deseja dividir. Digite "0" para sair. ')
-    le_intervalo [pgs] = intervalo 
-    pgs=pgs+1
-    if le_intervalo == 0:
-        break
-'''
-
-pginit = int(input('Escreva a pagina inicial da divisão. '))
-pgfim = int(input('Escreva a pagina final da divisão. '))
-
-file2pages = {
-    0: [pginit, pgfim]
-    
-}
-
-print(file2pages)
-
