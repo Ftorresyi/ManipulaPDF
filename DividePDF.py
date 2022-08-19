@@ -103,11 +103,13 @@ while pgs<= len(le_intervalo):
     if le_intervalo == 0:
         break
 '''
-pginit = input('Escreva a pagina inicial da divisão. ')
-pgfim = input('Escreva a pagina final da divisão. ')
+
+pginit = int(input('Escreva a pagina inicial da divisão. '))
+pgfim = int(input('Escreva a pagina final da divisão. '))
 
 file2pages = {
     0: [pginit, pgfim]
+    
 }
 
 print(file2pages)
