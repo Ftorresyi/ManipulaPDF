@@ -14,19 +14,11 @@ file2pages = {
     2: [11, 100], # 3rd splitted PDF file will contain the pages from 11 until the end or until the 100th page (if exists)
 }'''
 
-#FUNCIONANDO TOTAL 3
-pginit = 10000
-file2pages = {}
-
-for i in range(1,5):
-    while pginit != 0:
-        pginit = int(input('Digite a página inicial da divisão. Tecle Zero par a sair '))
-        pgfim = int(input('Digite a página final da divisão. Tecle Zero par a sair '))
-        file2pages[i] = [pginit, pgfim]
-        i=i+1
-        print(file2pages, type(file2pages))
-    else: break
-print (file2pages, " é um dicionario")
+file2pages = {
+    0: [0, 9], # 1st splitted PDF file will contain the pages from 0 to 9 (9 is not included)
+    1: [9, 11], # 2nd splitted PDF file will contain the pages from 9 (9 is included) to 11
+    2: [11, 100], # 3rd splitted PDF file will contain the pages from 11 until the end or until the 100th page (if exists)
+}
 
 '''In the above setting, we're going to split our PDF file into 3 new PDF documents, the first contains the first 9 pages,
 from 0 to 9 (while 9 is not included). The second file will contain the pages from 9 (included) to 11, and the last file
