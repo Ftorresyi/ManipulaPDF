@@ -1,12 +1,10 @@
-# -*- coding: utf-8 -*-
-# %%
 import os
 from pikepdf import Pdf
 
 # the target PDF document to split
 filename = "bca_do_dia.pdf"
 # load the PDF file
-pdf = Pdf.open(filename)
+arqpdf = Pdf.open(filename)
 
 '''#Next, we make the resulting PDF files (3 in this case) as a list:
 # a dictionary mapping PDF file to original PDF's page range
@@ -19,6 +17,7 @@ file2pages = {
 #FUNCIONANDO TOTAL 3
 pginit = 10000
 file2pages = {}
+
 for i in range(1,5):
     while pginit != 0:
         pginit = int(input('Digite a página inicial da divisão. Tecle Zero par a sair '))
@@ -48,7 +47,7 @@ new_pdf_index = 0
 it will only be incremented when we're done with making the previous file. Diving into the main loop:'''
 
 # iterate over all PDF pages
-for n, page in enumerate(pdf.pages):
+for n, page in enumerate(arqpdf.pages):
     if n in list(range(*file2pages[new_pdf_index])):
         # add the `n` page to the `new_pdf_index` file
         new_pdf_files[new_pdf_index].pages.append(page)
